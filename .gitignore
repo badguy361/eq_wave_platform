@@ -16,6 +16,7 @@ InstrumentResponse
 *.zip
 *.TW
 *.rar
+*.99999
 
 mseed2sac
 
