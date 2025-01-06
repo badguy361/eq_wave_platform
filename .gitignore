@@ -19,6 +19,7 @@ InstrumentResponse
 sac/
 TSMIP_Dataset/
 mseed2sac/
+*.99999
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
