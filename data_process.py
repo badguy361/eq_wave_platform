@@ -226,17 +226,18 @@ class recordProcess():
 if __name__ == '__main__':
 
     #! SACProcess
-    sac_path = "./TSMIP_Dataset/GuanshanChishangeq"
-    instrument_path = "./TSMIP_Dataset/InstrumentResponse/All"
+    sac_path = "./TSMIP_Dataset/20220918"
+    instrument_path = "./TSMIP_Dataset/instrument"
     sac_process = SACProcess(sac_path, instrument_path)
 
     # ? step-2 remove instrument response
-    # sac_files = sac_process.getSACFile(get_all=True)
+    sac_files = sac_process.getSACFile(get_all=True)
     # instrument_file = sac_process.getInstrumentFile()
-    # sac_process.removeInstrumentResponse(sac_files, instrument_file[0])
+    # print(instrument_file)
+    # sac_process.removeInstrumentResponse(sac_files, instrument_file[3])
 
     # ? step-3 rename
-    # file_names = [sac_process.reName(sac_path, os.path.basename(file)) for file in sac_files]
+    file_names = [sac_process.reName(sac_path, os.path.basename(file)) for file in sac_files]
 
     #! recordProcess
     # stations_path = "../TSMIP_Dataset/TSMIP_stations.csv"

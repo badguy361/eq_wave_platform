@@ -17,7 +17,9 @@ RUN apt-get update && \
         libx11-6 \
         libncurses5 \
         zlib1g-dev \
-        build-essential && \
+        build-essential \
+        curl \
+        git && \
     pip3 install -r requirements.txt
 
 # Docker RUN指令預設是用/bin/sh -c執行，但shell沒有source，所以這邊要改用bash
