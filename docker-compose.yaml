@@ -1,0 +1,13 @@
+version: '3'
+services:
+  python_sac:
+    image: badguy361/python-sac
+    container_name: python_sac_container
+    ports:
+      - "8000:7000"
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+    volumes:
+      - ./TSMIP_Dataset:/app/TSMIP_Dataset
+    stdin_open: true
+    tty: true

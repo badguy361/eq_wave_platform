@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  namespace: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+      - name: influxdb
+        image: influxdb:latest  # 或指定特定版本，例如 influxdb:2.7.3
+        ports:
+        - containerPort: 8086  # InfluxDB 默认端口
+        volumeMounts:
+        - mountPath: /var/lib/influxdb2  # InfluxDB 数据存储路径
+          name: influxdb-pv
+      volumes:
+      - name: influxdb-pv
+        persistentVolumeClaim:
+          claimName: influxdb-pvc
