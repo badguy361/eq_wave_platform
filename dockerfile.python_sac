@@ -2,7 +2,8 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY mseed2sac sac-101.5c-linux_x86_64.tar.gz /app/
+COPY mseed2sac /app/mseed2sac
+COPY sac-101.5c-linux_x86_64.tar.gz /app/sac-101.5c-linux_x86_64.tar.gz
 
 RUN apt-get update && \
     apt-get install -y \
@@ -20,10 +21,11 @@ RUN apt-get update && \
         zlib1g-dev \
         build-essential \
         curl \
-        git
+        git \ 
+        iputils-ping
 
-RUN git clone https://github.com/iris-edu/mseed2sac.git
-RUN pip3 install -r requirements.txt
+RUN git clone https://github.com/badguy361/eq_wave_platform.git
+RUN cd eq_wave_platform && pip3 install -r requirements.txt && cd /app
 
 # Docker RUN指令預設是用/bin/sh -c執行，但shell沒有source，所以這邊要改用bash
 SHELL ["/bin/bash", "-c"]

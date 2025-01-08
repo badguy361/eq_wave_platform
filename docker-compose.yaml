@@ -9,5 +9,11 @@ services:
       - DISPLAY=host.docker.internal:0.0
     volumes:
       - ./TSMIP_Dataset:/app/TSMIP_Dataset
+    networks:
+      - my_custom_network
     stdin_open: true
     tty: true
+
+networks:
+  my_custom_network:
+    external: true
